@@ -21,7 +21,7 @@ resource "aws_subnet" "my_subnet" {
 
 resource "aws_db_subnet_group" "my_subnet_group" {
   name       = "my-subnet-group"
-  subnet_ids = [aws_subnet.my_subnet[0].id, aws_subnet.my_subnet[1].id, aws_subnet.my_subnet[2].id]
+  subnet_ids = aws_subnet.my_subnet[*].id
 
   tags = {
     Name = "My DB Subnet Group"
@@ -49,18 +49,8 @@ resource "aws_route_table" "my_route_table" {
   }
 }
 
-resource "aws_route_table_association" "my_subnet1_association" {
-  subnet_id      = aws_subnet.my_subnet[0].id
+resource "aws_route_table_association" "my_subnet_association" {
+  count          = length(var.subnets)
+  subnet_id      = aws_subnet.my_subnet[count.index].id
   route_table_id = aws_route_table.my_route_table.id
 }
-
-resource "aws_route_table_association" "my_subnet2_association" {
-  subnet_id      = aws_subnet.my_subnet[1].id
-  route_table_id = aws_route_table.my_route_table.id
-}
-
-resource "aws_route_table_association" "my_subnet3_association" {
-  subnet_id      = aws_subnet.my_subnet[2].id
-  route_table_id = aws_route_table.my_route_table.id
-}
-
