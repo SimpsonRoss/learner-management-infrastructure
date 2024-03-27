@@ -1,0 +1,3 @@
+[submodule "ce-team-project-frontend"]
+	path = ce-team-project-frontend
+	url = https://github.com/dogmoony/ce-team-project-frontend
