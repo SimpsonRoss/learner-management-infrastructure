@@ -22,7 +22,7 @@ jobs:
           command: |
             pwd
             npm i
-          working_directory: ~/learner-management-service/frontend-app
+          working_directory: ~/learner-management-service/frontend-app/frontend-app
       - run:
           name: Build
           command: npm run build
