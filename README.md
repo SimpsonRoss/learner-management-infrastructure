@@ -29,14 +29,15 @@ Space to write about the project
 
 To build our project we used the following tools:
 
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Terraform-Dark.svg" alt="terraform" width="50"/>
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/AWS-Dark.svg" alt="aws" width="50"/>
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Kubernetes.svg" alt="kubernetes" width="50"/>
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Docker.svg" alt="docker" width="50"/>
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Grafana-Dark.svg" alt="grafana" width="50"/>
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/PostgreSQL-Dark.svg" alt="postgres" width="50"/>
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Prometheus.svg" alt="prometheus" width="50"/>
-
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: start;">
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Terraform-Dark.svg" alt="terraform" width="50"/>
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/AWS-Dark.svg" alt="aws" width="50"/>
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Kubernetes.svg" alt="kubernetes" width="50"/>
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Docker.svg" alt="docker" width="50"/>
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Grafana-Dark.svg" alt="grafana" width="50"/>
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/PostgreSQL-Dark.svg" alt="postgres" width="50"/>
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Prometheus.svg" alt="prometheus" width="50"/>
+</div>
 
 <!-- GETTING STARTED -->
 
