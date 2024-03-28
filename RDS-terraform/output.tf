@@ -1,5 +1,3 @@
-
-
 output "rds_instance_endpoint" {
   description = "The connection endpoint for the RDS instance."
   value       = module.rds.db_endpoint

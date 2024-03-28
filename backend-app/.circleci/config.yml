@@ -3,7 +3,7 @@ orbs:
   docker: circleci/docker@1.5.0
 jobs:
   build-and-test:
-    working_directory: ~/backend-app
+    working_directory: ~/learner-management-service
     docker:
       - image: cimg/openjdk:17.0.7
     steps:
@@ -12,21 +12,22 @@ jobs:
       - run:
           name: Build
           command: mvn -B -DskipTests clean package
-          working_directory: ~/backend-app
+          working_directory: ~/learner-management-service/backend-app
       - run:
           name: Test
           command: mvn test
-          working_directory: ~/backend-app
+          working_directory: ~/learner-management-service/backend-app
       - run:
           name: Build and Push Docker image
           command: |
             docker build -t $DOCKERHUB_USERNAME/private-repo-test:${CIRCLE_BUILD_NUM} .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/private-repo-test:${CIRCLE_BUILD_NUM}
-            
+          working_directory: ~/learner-management-service/backend-app
 
 workflows:
   version: 2
   build_and_deploy:
     jobs:
       - build-and-test
+#

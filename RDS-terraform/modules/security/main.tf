@@ -1,3 +1,5 @@
+# Security Group Configuration for PostgreSQL
+
 resource "aws_security_group" "my_sg" {
   name        = var.sg_name
   description = "Allow PostgreSQL"
@@ -10,7 +12,3 @@ resource "aws_security_group" "my_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-# output "sg_id" {
-#   value = aws_security_group.my_sg.id
-# }

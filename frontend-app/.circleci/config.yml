@@ -3,7 +3,7 @@ orbs:
   docker: circleci/docker@1.5.0
 jobs:
   build:
-    working_directory: ~/ce-team-project-frontend
+    working_directory: ~/learner-management-service
     docker:
       - image: cimg/node:20.10.0
     steps:
@@ -12,11 +12,11 @@ jobs:
       - run:
           name: Install vite
           command: npm i vite
-          working_directory: ~/ce-team-project-frontend
+          working_directory: ~/learner-management-service/frontend-app
       - run:
           name: Build
           command: npm run build
-          working_directory: ~/ce-team-project-frontend
+          working_directory: ~/learner-management-service/frontend-app
       - run:
           name: Build and Push Docker image
           command: |
@@ -24,6 +24,7 @@ jobs:
             docker build -t $DOCKERHUB_USERNAME/circleci-team-project-frontend:$TAG .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $DOCKERHUB_USERNAME/circleci-team-project-frontend:$TAG
+          working_directory: ~/learner-management-service/frontend-app
 workflows:
   build:
     jobs:

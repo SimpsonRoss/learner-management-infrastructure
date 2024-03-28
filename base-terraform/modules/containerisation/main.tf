@@ -1,9 +1,11 @@
+# Create the EKS cluster and node group
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "19.15.2"
 
   cluster_name    = var.cluster_name
-  cluster_version = "1.27"
+  cluster_version = var.cluster_version
 
   vpc_id                         = var.vpc_id
   subnet_ids                     = var.private_subnets
@@ -15,7 +17,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "node-group-1"
+      name = var.eks_node_group_name
 
       instance_types = ["t3.small"]
 
