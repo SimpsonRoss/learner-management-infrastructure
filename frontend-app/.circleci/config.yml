@@ -3,7 +3,7 @@ orbs:
   docker: circleci/docker@1.5.0
 jobs:
   build:
-    working_directory: ~/learner-management-service/frontend-app
+    working_directory: ~/frontend-app
     docker:
       - image: cimg/node:20.10.0
     steps:
@@ -12,11 +12,11 @@ jobs:
       - run:
           name: Install vite
           command: npm i vite
-          working_directory: ~/learner-management-service/frontend-app
+          working_directory: ~/frontend-app
       - run:
           name: Build
           command: npm run build
-          working_directory: ~/learner-management-service/frontend-app
+          working_directory: ~/frontend-app
       - run:
           name: Build and Push Docker image
           command: |
