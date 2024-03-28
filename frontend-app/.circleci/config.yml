@@ -10,23 +10,13 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Directory?
-          command: |
-            pwd
-            ls
-            cd ..
-            pwd
-          working_directory: ~/learner-management-service/frontend-app
-      - run:
           name: Install vite
-          command: |
-            pwd
-            npm i
+          command: npm i
           working_directory: ~/learner-management-service/frontend-app/frontend-app
       - run:
           name: Build
           command: npm run build
-          working_directory: ~/learner-management-service/frontend-app
+          working_directory: ~/learner-management-service/frontend-app/frontend-app
       - run:
           name: Build and Push Docker image
           command: |
