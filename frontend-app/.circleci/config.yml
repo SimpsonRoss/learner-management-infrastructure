@@ -11,7 +11,9 @@ jobs:
       - setup_remote_docker
       - run:
           name: Directory?
-          command: ls
+          command: |
+          pwd
+          ls
           working_directory: ~/learner-management-service/frontend-app
       - run:
           name: Install vite
