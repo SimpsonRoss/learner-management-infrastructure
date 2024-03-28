@@ -10,7 +10,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Install vite
+          name: Install vite .
           command: npm i
           working_directory: ~/frontend-app
       - run:
