@@ -14,10 +14,14 @@ jobs:
           command: |
           pwd
           ls
+          cd ..
+          pwd
           working_directory: ~/learner-management-service/frontend-app
       - run:
           name: Install vite
-          command: npm i
+          command: |
+          pwd
+          npm i
           working_directory: ~/learner-management-service/frontend-app
       - run:
           name: Build
