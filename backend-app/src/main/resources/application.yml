@@ -17,9 +17,9 @@ management:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:customer
-    username: sa
-    password: password
+    url: terraform-20240327101142944900000002.cpgwwgu0sw2c.eu-west-2.rds.amazonaws.com:5432
+    username: postgres
+    password: SuperSecurePassword
     driverClassName: org.h2.Driver
   jpa:
     hibernate:
