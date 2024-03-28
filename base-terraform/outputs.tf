@@ -1,7 +1,13 @@
+# AWS Region
+
 output "region" {
   description = "AWS region"
   value       = var.region
 }
+
+# ------------------------------------------------------------
+
+# EKS Cluster Outputs
 
 output "cluster_name" {
   description = "Kubernetes Cluster Name"
