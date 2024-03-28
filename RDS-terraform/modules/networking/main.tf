@@ -31,7 +31,6 @@ resource "aws_subnet" "karv_db_subnet" {
 # Create a DB subnet group comprising the above subnets
 
 resource "aws_db_subnet_group" "karv_subnet_group" {
-  # name       = "karv-subnet-group"
   subnet_ids = aws_subnet.karv_db_subnet[*].id
 
   tags = {
