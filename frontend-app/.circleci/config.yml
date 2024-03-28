@@ -11,7 +11,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Install vite
-          command: npm i
+          command: npm i vite
           working_directory: ~/learner-management-service/frontend-app/frontend-app
       - run:
           name: Build
