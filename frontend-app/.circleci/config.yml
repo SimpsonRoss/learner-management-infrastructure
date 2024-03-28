@@ -12,16 +12,16 @@ jobs:
       - run:
           name: Directory?
           command: |
-          pwd
-          ls
-          cd ..
-          pwd
+            pwd
+            ls
+            cd ..
+            pwd
           working_directory: ~/learner-management-service/frontend-app
       - run:
           name: Install vite
           command: |
-          pwd
-          npm i
+            pwd
+            npm i
           working_directory: ~/learner-management-service/frontend-app
       - run:
           name: Build
