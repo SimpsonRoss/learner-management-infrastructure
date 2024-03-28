@@ -1,6 +1,6 @@
 # Learner Management Service - Team KARV
 
-![Example of adding an image](https://github.com/SimpsonRoss/trkR8/blob/main/public/branding.png)
+![Example of adding an image]()
 
 
 <a name="readme-top"></a>
