@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend-app
-          image: andrey342/private-repo-test:10 #the repo will be renamed
+          image: andrey342/private-repo-test:10 
           ports:
             - containerPort: 8080
           resources:
