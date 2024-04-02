@@ -4,7 +4,7 @@ metadata:
   name: ingress-status
 spec:
   rules:
-  - host: ab7ba1bcc03e545b8868f711c04bb6df-1899097080.eu-west-2.elb.amazonaws.com
+  - host: a97efae2bdcd44e47ba816cf88052c88-599848173.eu-west-2.elb.amazonaws.com
     http:
       paths:
       - path: /
