@@ -14,8 +14,11 @@ spec:
     spec:
       containers:
         - name: frontend-app
-          image: kkushnir/circleci-team-project-frontend:0.1.34
+          image: kkushnir/circleci-team-project-frontend:0.1.35
           ports:
             - containerPort: 80
+          # env:
+          #   - name: VITE_API_BASE_URL
+          #     value: a5740e121e2644e94a15204e633b7508-1206565335.eu-west-2.elb.amazonaws.com
       imagePullSecrets:
         - name: docker-cred-frontend
