@@ -17,7 +17,7 @@ management:
 
 spring:
   datasource:
-    url: jdbc:mydatabse://terraform-20240327101142944900000002.cpgwwgu0sw2c.eu-west-2.rds.amazonaws.com:5432/mydatabase
+    url: jdbc:postgresql://terraform-20240327101142944900000002.cpgwwgu0sw2c.eu-west-2.rds.amazonaws.com:5432/mydatabase
     username: postgres
     password: SuperSecurePassword
   jpa:
