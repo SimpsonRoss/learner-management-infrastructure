@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend-app
-          image: andrey342/private-repo-test:11
+          image: andrey342/private-repo-test:12
           ports:
             - containerPort: 8080
           resources:
