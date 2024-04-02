@@ -28,14 +28,17 @@ A team project to build the cloud infrastructure and deploy a backend and fronte
 To build our project we used the following tools:
 
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: start;">
-  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Terraform-Dark.svg" alt="terraform" width="50"/>
-  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/AWS-Dark.svg" alt="aws" width="50"/>
-  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Kubernetes.svg" alt="kubernetes" width="50"/>
-  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Docker.svg" alt="docker" width="50"/>
-  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Grafana-Dark.svg" alt="grafana" width="50"/>
-  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/PostgreSQL-Dark.svg" alt="postgres" width="50"/>
-  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/main/icons/Prometheus.svg" alt="prometheus" width="50"/>
+  <img src="/media/Terraform.svg" alt="terraform" width="50" style="margin-right: 10px;"/>
+  <img src="/media/AWS.svg" alt="aws" width="50" style="margin-right: 10px;"/>
+  <img src="/media/Kubernetes.svg" alt="kubernetes" width="50" style="margin-right: 10px;"/>
+  <img src="/media/Docker.svg" alt="docker" width="50" style="margin-right: 10px;"/>
+  <img src="/media/Grafana.svg" alt="grafana" width="50" style="margin-right: 10px;"/>
+  <img src="/media/PostgresSQL.svg" alt="postgres" width="50" style="margin-right: 10px;"/>
+  <img src="/media/Prometheus.svg" alt="prometheus" width="50" style="margin-right: 10px;"/>
+  <img src="/media/CircleCI.svg" alt="circleci" width="50" style="margin-right: 10px;"/>
+  <img src="/media/ArgoCD.svg" alt="argocd" width="50" style="margin-right: 10px;"/>
 </div>
+
 
 <!-- GETTING STARTED -->
 
