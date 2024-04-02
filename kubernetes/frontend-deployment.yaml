@@ -19,6 +19,3 @@ spec:
             - containerPort: 80
       imagePullSecrets:
         - name: docker-cred-frontend
-      # env:
-      #   - name: VITE_API_BASE_URL
-      #     value: "a1b55c5eb26634af3b153bbfaa3fc2f1-1422858556.eu-west-2.elb.amazonaws.com"  
