@@ -4,7 +4,8 @@ metadata:
   name: backend-app
   labels:
     app.kubernetes.io/part-of: backend-app
-  annotations:   
+  annotations: 
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"  
     prometheus.io/port: "backend-metric"
     prometheus.io/scrape: "true"
 spec:
