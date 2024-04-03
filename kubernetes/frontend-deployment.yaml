@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend-app
-          image: simpsonross/circleci-team-project-frontend:0.1.3
+          image: simpsonross/circleci-team-project-frontend:0.1.4
           ports:
             - containerPort: 80
       imagePullSecrets:
