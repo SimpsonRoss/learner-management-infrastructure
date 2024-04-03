@@ -47,44 +47,57 @@ To build our project we used the following tools:
 2. **Create AWS secrets for database credentials**
     - Go to AWS secrets manager
     - Hit “Store a new secret”
-    - Hit “Other type of secret” --> “Key/value”
+    - Hit “Other type of secret” &rarr; “Key/value”
     - Add a key of “username” and a value of your chosen username
     - Set the secret name to “POSTGRES_USERNAME2”
     - Then repeat steps but this time to add:
       - “password” and value of your chosen password
       - Set the secret name to “POSTGRES_PASSWORD2”
-      **NOTE:** You can set the secret names to whatever you want, so long as you change them in /[learner-management-service/RDS-terraform/terraform.tfvars](https://github.com/vnrosu/learner-management-service/blob/f3bbfccf3c75b9000e23e14d6911df2be80814ec/RDS-terraform/terraform.tfvars#L9)
+      - **NOTE:** You can set the secret names to whatever you want, so long as you change them in /[learner-management-service/RDS-terraform/terraform.tfvars](https://github.com/vnrosu/learner-management-service/blob/f3bbfccf3c75b9000e23e14d6911df2be80814ec/RDS-terraform/terraform.tfvars#L9)
 
 3. **Spin up the EKS**
-    - CD into the base-terraform directory and run these commands to get the EKS spun up.
+    - cd into the base-terraform directory and run these commands to get the EKS set up.
       - `terraform init`
       - `terraform apply`
 
 4. **Spin up the Database**
-    - CD into the RDS-terraform directory and run these commands to get the RDS spun up.
+    - cd into the RDS-terraform directory and run these commands to get the RDS set up.
       - `terraform init`
       - `terraform apply`
       - Copy and store the returned 'rds_instance_endpoint' for accessing the database later on
 
-5. **Open CircleCI** - [https://app.circleci.com/](https://app.circleci.com/)
+5. **Set up CircleCI** - [https://app.circleci.com/](https://app.circleci.com/)
+    - Create an account or log in
     - Create a project for the Frontend
-        - Projects --> Create Project --> GitHub
+        - Projects &rarr; Create Project &rarr; GitHub
         - Name your project and choose the forked repository
-        - Hit 'Review configuration file' --> 'Use Existing Config' --> Start Building
-        - Project Settings --> 
-            - Edit the Config Source --> Change 'Config File Path' to ```frontend-app/.circleci/config.yml```
-            - Create the environment variables for your: `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`
-    - Repeat the steps but this time for the backend
+        - Hit 'Review configuration file' &rarr; 'Use Existing Config' &rarr; Start Building
+        - Project Settings &rarr; 
+            - Edit the Config Source &rarr; Change 'Config File Path' to ```frontend-app/.circleci/config.yml```
+            - Create the environment variables: `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`
+    - Repeat the steps but this time for the Backend
         - Use 'Config File Path' to ```backend-app/.circleci/config.yml```
 
 6. **Set up and Run ArgoCD**
-    - ```kubectl create namespace argocd```
-    - ```kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml```
-    - ```watch kubectl get pods -n argocd```
+    ```
+    kubectl create namespace argocd
+    ```
+    ```
+    kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    ```
+    ```
+    watch kubectl get pods -n argocd
+    ```
     - Wait until you can see your pods all listed as 'Running'
-    - Get the password ```kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d```
+    - Get the password 
+    ```
+    kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+    ```
     - Make a note of the returned password
-    - Port forward the service ```kubectl port-forward svc/argocd-server -n argocd 8080:443```
+    - Port forward the service 
+    ```
+    kubectl port-forward svc/argocd-server -n argocd 8080:443
+    ```
 
 7. **Log in to ArgoCD**
    - Go to [https://localhost:8080/](https://localhost:8080/)
@@ -114,8 +127,8 @@ To build our project we used the following tools:
       ```
 
 10. **Set up Repsitory and Application in ArgoCD**
-    - Settings --> Repositories --> Connect to your forked repository
-    - Applications --> New App
+    - Settings &rarr; Repositories &rarr; Connect to your forked repository
+    - Applications &rarr; New App
       - Set up Prometheus as a new Application
       - Set up a new Application for this project. Use the settings below:
       ![App Settings for Argo CD](/media/Argo-App-Settings.png)
@@ -124,19 +137,25 @@ To build our project we used the following tools:
       
 
 11. **Get the backend service load balancer**
-    - ```kubectl get svc```
+    ```
+    kubectl get svc
+    ```
     - Update the URL in the frontend-app/.env file 
     - Commit and Push these changes to your forked repo
 
 12. **Test the functionality**
-    - ```kubectl get svc```
+    ```
+    kubectl get svc
+    ```
     - Grab the loadbalancer URL for your frontend
     - Visit the link, and test app behaviour:
       - Sign up
       - Log in
 
 13. **Setup and Login to Grafana**
-    - ```kubectl port-forward svc/prometheus-grafana 9000:80```
+    ```
+    kubectl port-forward svc/prometheus-grafana 9000:80
+    ```
     - Go to [https://localhost:9000/](https://localhost:9000/)
       - Username: admin
       - Password: prom-operator
