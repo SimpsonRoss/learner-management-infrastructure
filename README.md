@@ -142,7 +142,7 @@ To build our project we used the following tools:
       - Set up a new Application for this project. Use the settings below:
       ![App Settings for Argo CD](/media/Argo-App-Settings.png)
       - Make sure it's Synced and Healthy, like this:
-      ![How The App Looks When Healthy](/media/Argo-Healthy-Synced.png)
+      ![How The App Looks When Healthy](/media/Argo-Healthy-Synced2.png)
       
 
 11. **Get the backend service load balancer**
