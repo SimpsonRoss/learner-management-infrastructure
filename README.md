@@ -57,13 +57,21 @@ To build our project we used the following tools:
 
 3. **Spin up the EKS**
     - cd into the base-terraform directory and run these commands to get the EKS set up.
-      - `terraform init`
-      - `terraform apply`
+    ```
+    terraform init
+    ```
+    ```
+    terraform apply
+    ```
 
 4. **Spin up the Database**
     - cd into the RDS-terraform directory and run these commands to get the RDS set up.
-      - `terraform init`
-      - `terraform apply`
+    ```
+    terraform init
+    ```
+    ```
+    terraform apply
+    ```
       - Copy and store the returned 'rds_instance_endpoint' for accessing the database later on
 
 5. **Set up CircleCI** - [https://app.circleci.com/](https://app.circleci.com/)
@@ -77,6 +85,7 @@ To build our project we used the following tools:
             - Create the environment variables: `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`
     - Repeat the steps but this time for the Backend
         - Use 'Config File Path' to ```backend-app/.circleci/config.yml```
+    - Commit and Push an initial commit to your GitHub Repo, which will trigger CircleCI to create Docker Images
 
 6. **Set up and Run ArgoCD**
     ```
@@ -111,18 +120,18 @@ To build our project we used the following tools:
 
 9. **Create Kubernetes secrets**
 
-    - Replace the URL value of SPRING_DATASOURCE_URL with the URL that was outputted when you built your RDS with terraform (Step 4) and run:
+    - Replace DATABASE ENDPOINT URL, DATABASE USERNAME and DATABASE PASSWORD with the URL and credentials that were outputted when you built your RDS with terraform (Step 4) and run:
       ```
-      kubectl create secret generic spring-datasource-url --from-literal=SPRING_DATASOURCE_URL='jdbc:postgresql://terraform-20240327101142944900000002.cpgwwgu0sw2c.eu-west-2.rds.amazonaws.com:5432/mydatabase'
-      kubectl create secret generic spring-datasource-username --from-literal=SPRING_DATASOURCE_USERNAME='postgres'
-      kubectl create secret generic spring-datasource-password --from-literal=SPRING_DATASOURCE_PASSWORD='SuperSecurePassword'
+      kubectl create secret generic spring-datasource-url --from-literal=SPRING_DATASOURCE_URL='jdbc:postgresql://<DATABASE ENDPOINT URL>:5432/<DATABASE NAME>'
+      kubectl create secret generic spring-datasource-username --from-literal=SPRING_DATASOURCE_USERNAME='<DATABASE USERNAME>'
+      kubectl create secret generic spring-datasource-password --from-literal=SPRING_DATASOURCE_PASSWORD='<DATABASE PASSWORD>'
       ```
 
-    - Add in your Docker username and token and run:
+    - Add in your DOCKER USERNAME and DOCKER TOKEN and run:
       ```
       kubectl create secret docker-registry docker-cred \
-      --docker-username=<YOUR DOCKER USERNAME> \
-      --docker-password=<YOUR DOCKER TOKEN> \
+      --docker-username=<DOCKER USERNAME> \
+      --docker-password=<DOCKER TOKEN> \
       --namespace=default
       ```
 
@@ -140,25 +149,34 @@ To build our project we used the following tools:
     ```
     kubectl get svc
     ```
-    - Update the URL in the frontend-app/.env file 
+    - Update the URL in the [frontend-app/.env](https://github.com/vnrosu/learner-management-service/blob/752dd35499e0d365d8764946e76cf148d91411c9/frontend-app/.env#L1) file 
     - Commit and Push these changes to your forked repo
+    - **NOTE:** This will generate an updated image tag in DockerHub
 
-12. **Test the functionality**
+12. **Amend Frontend Deployment file**
+    - Edit the frontend-deployment.yaml [image name](https://github.com/vnrosu/learner-management-service/blob/d594eb03a3297468652448a0c762835bff90d7a3/kubernetes/frontend-deployment.yaml#L17) and tag to match your new image in DockerHub
+    - **NOTE:** ArgoCD should automatically update your deployment with these changes
+
+13. **Test the functionality**
     ```
     kubectl get svc
     ```
     - Grab the loadbalancer URL for your frontend
-    - Visit the link, and test app behaviour:
+    - Visit the link, and test the app behaviour:
       - Sign up
       - Log in
 
-13. **Setup and Login to Grafana**
+14. **Setup and Login to Grafana**
     ```
     kubectl port-forward svc/prometheus-grafana 9000:80
     ```
     - Go to [https://localhost:9000/](https://localhost:9000/)
       - Username: admin
       - Password: prom-operator
+    - You can use preset dashboards to view performance metrics:
+      ![Grafana dashboard of the project](/media/Grafana-Dashboard.png)
+
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -192,7 +210,7 @@ This was our final project for the Northcoders Cloud Engineering bootcamp and th
 - [ ] Centralise our image registry in AWS ECR
 - [X] Set up ZenDuty oncall rotation and link to Grafana alerts
 - [ ] Create alternate IAC in Pulumi, as a Terraform alternative
-- [ ] Slack and/or email notifications
+- [ ] Slack and/or email notifications from CircleCI
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
