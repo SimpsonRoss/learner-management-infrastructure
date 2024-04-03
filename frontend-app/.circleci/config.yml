@@ -20,10 +20,10 @@ jobs:
       - run:
           name: Build and Push Docker image
           command: |
-            TAG=0.1.$CIRCLE_BUILD_NUM
-            docker build -t $DOCKERHUB_USERNAME/circleci-team-project-frontend:$TAG .
+            TAG=1.0.$CIRCLE_BUILD_NUM
+            docker build -t $DOCKERHUB_USERNAME/frontend:$TAG .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            docker push $DOCKERHUB_USERNAME/circleci-team-project-frontend:$TAG
+            docker push $DOCKERHUB_USERNAME/frontend:$TAG
           working_directory: ~/learner-management-service/frontend-app
 workflows:
   build:
