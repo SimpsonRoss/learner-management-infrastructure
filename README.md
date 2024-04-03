@@ -79,13 +79,13 @@ To build our project we used the following tools:
       - Use 'Config File Path' to ```backend-app/.circleci/config.yml```
 
 6. **Set up and Run ArgoCD**
-   a. `kubectl create namespace argocd`
-   b. `kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml`
-   c. `watch kubectl get pods -n argocd`
-   d. Wait until you can see your pods all listed as 'Running'
-   e. Get the password `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
-   f. Make a note of the returned password
-   g. Port forward the service `kubectl port-forward svc/argocd-server -n argocd 8080:443`
+    a. ```kubectl create namespace argocd```
+    b. ```kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml```
+    c. ```watch kubectl get pods -n argocd```
+    d. Wait until you can see your pods all listed as 'Running'
+    e. Get the password ```kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d```
+    f. Make a note of the returned password
+    g. Port forward the service ```kubectl port-forward svc/argocd-server -n argocd 8080:443```
 
 7. **Log in to ArgoCD**
    a. Go to [https://localhost:8080/](https://localhost:8080/)
