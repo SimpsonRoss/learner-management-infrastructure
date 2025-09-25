@@ -1,4 +1,4 @@
-# Learner Management Service - Team KARV
+# Learner Management Service
 
 ![Northcoders portal screenshot](/media/app_screenshot.png)
 
